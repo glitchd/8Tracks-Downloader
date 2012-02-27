@@ -8,7 +8,7 @@ This is a simple Playlist downloader for 8Tracks
 ==== INSTRUCTIONS ====
 a. Initialize your web server. I recommend XAMPP for Windows and Linux.
 b. Copy the 8tracks-downloader folder to your web root folder.
-c. Make sure that the 8tracks-downloader permissions are set to 0777.
+c. Create a directory named 'songs' in the same directory as download.php and set it's permissions to 0777.
 
 1. Go to http://localhost/8tracks-downloader in your web browser.
 2. Type in the playlist's URL and click "Download".
