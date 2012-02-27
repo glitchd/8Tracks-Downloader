@@ -4,8 +4,26 @@
 Thankfully though, it is very easy to get music from the site.
 
 This is a simple Playlist downloader for 8Tracks
+==== INSTRUCTIONS ====
 <strike> Simply change the $playlist variable in index.php and run the file... It downloads the entire playlist to the "songs" folder</strike>
-Check Update
+a. Initialize your web server. I recommend XAMPP for Windows and Linux.
+b. Copy the 8tracks-downloader folder to your web root folder.
+c. Make sure that the 8tracks-downloader permissions are set to 0777.
+
+1. Go to http://localhost/8tracks-downloader in your web browser.
+2. Type in the playlist's URL and click "Download".
+3. You can choose to download songs one by one (or simply view the playlist) by choosing "Show Playlist". Else the script creates a Zip file of the entire playlist.
+4. Relax and let it do its magic.  
+
+
+==== TROUBLESHOOTING ====
+Fatal error: Maximum execution time of XXX seconds exceeded
+The thing with the script is that it doesn't stop running until the last song has been downloaded. PHP features a maximum execution time parameter, which is useful when you are running a traditional web page (you wouldn't want a single cycled script to take your server down), but in this case that's what is throwing an error.
+Depending on various factors (such as your download speed, the number of songs in the playlist, etc..) the script can take up to 10 minutes or more to download a single playlist! My recommendation would be to set your execution time to 0, that way PHP interprets it as 'unlimited'.
+
+Fatal error: Call to undefined function curl_init()
+You might need to enable/install the cURL library. Try this guide first [ http://www.webtechquery.com/index.php/2010/03/fatal-error-call-to-undefined-function-curl_init-windows-and-linux-ubuntu/ ], it'll solve most problems related to cURL.
+
 
 Hack developed overnight using PHP+CURL+XAMPP and while listening to The Awkward Moment when the Remix is better than the Original... (http://8tracks.com/awhit10/the-awkward-moment-when-the-remix-is-better-than-the-original) :) :)
 
@@ -17,3 +35,24 @@ UPDATE 2:
 8Tracks used to provide 64K m4a (still does infact), though their primary server now encodes into 48K ...This provides smaller filesize, but less quality. So have added support for 64K encoded downloads.
 Updated UI: http://brizzly.com/pic/4S4Q (Just check HIGH QUALITY to download 64K m4a's)
 Maintaining 64K encoding works out pretty costly for the 8Tracks team ( http://groups.google.com/group/8tracks-public-api/browse_thread/thread/14da42858b928b88# ) so I don't know how long they'll support it for! But while they do, enjoy! :)
+
+(28/2/12) UPDATE 3:
+I never thought this would be used by anyone other than me, but the sheer number of emails I've gotten have been amazing! Thanks! :)
+Over the last month or so, I got many emails complaining that the script wasn't working. This was an issue I'd noted but not worked on (Yes, I'm lazy! :p)
+Like I've mentioned before, this was basically a one night hack, and wasn't meant to become a full fledged project, but the response has been great! :)
+
+Edmundo Fuentes (mundofr on Github) sent this lovely mail debugging the issue:
+"I downloaded your script from github and ran it without success.  I analyzed it and found that 8tracks now requires an API key.  In your script, the request for a playtoken (lines 23-28) is not valid anymore and 8tracks returns a string message, which messes up the json_decode() function in line 30 making the $obj variable null.  From there, the scripts fails to do anything else."
+BAM! Perfectly said. 
+
+So tweaked the script a little more to ensure it works again! :)
+Note: http://8tracks.com/it-sallgoodindahood/drunk-bitch-anthems-1 was playing while I coded.... Just saying! :P
+
+Some issues though:
+1) No high quality anymore... Atleast as of now, it's just 48K M4As
+2) Remi Gabillet(co-founder of 8Tracks and a personal idol) knows there's a web scrapping script being used ... Not saying it's just this script, but am guessing it's similar scripts: http://groups.google.com/group/8tracks-public-api/browse_thread/thread/522bd445da36c5e9
+So, I really can't say how much longer this script will work without an API key. Using an API key without too many limitations would be great, so let's see...
+
+But as long as it does... Enjoy! :)
+
+PS mundofr's working on a Proper format API-using version of this same script over at the fork at: https://github.com/mundofr/8Tracks-Downloader .. You may want to give that a look too! :)

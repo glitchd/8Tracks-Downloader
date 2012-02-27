@@ -26,9 +26,12 @@ PLAYLIST URL<br/>
 <div id="header">
 <input type="checkbox" name="show" value="Yes" />SHOW PLAYLIST
 </div>
+<!-- THIS DOESN'T WORK ANYMORE... NEED TO FIGURE OUT WHY! :P -->
+<!--
 <div id="header">
 <input type="checkbox" name="highq" value="Yes" />HIGH QUALITY
 </div>
+-->
 </form>
 </div>
 </div>
