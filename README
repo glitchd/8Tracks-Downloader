@@ -4,8 +4,8 @@
 Thankfully though, it is very easy to get music from the site.
 
 This is a simple Playlist downloader for 8Tracks
+
 ==== INSTRUCTIONS ====
-<strike> Simply change the $playlist variable in index.php and run the file... It downloads the entire playlist to the "songs" folder</strike>
 a. Initialize your web server. I recommend XAMPP for Windows and Linux.
 b. Copy the 8tracks-downloader folder to your web root folder.
 c. Make sure that the 8tracks-downloader permissions are set to 0777.
