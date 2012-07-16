@@ -82,5 +82,5 @@ body#theme_1 {background:#000000 0 0 repeat-x;}
 #header{position:relative;margin:0 auto;padding-left:30%;zoom:1;}
 #body:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
 
-#songs{text-align:center;position:absolute;top:40%; left: 35%;}
+#songs{text-align:center;position:relative;}
 #songcount{font-size:33px;}
